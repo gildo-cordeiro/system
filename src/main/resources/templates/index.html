@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <title>Converter System</title>
+      <link rel="stylesheet"
+         href="/bootstrap/css/bootstrap.min.css"
+         th:href="@{/bootstrap/css/bootstrap.min.css}">
+      <style type="text/css">
+         .container {
+         width: 100%;
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         }
+      </style>
+   </head>
+   <body>
+      <div class="container h-100">
+         <div class="row h-100 justify-content-center align-items-center">
+            <form th:action="@{/convert}"	th:object="${time}"  class="col-12" method="POST" name="formulario" >
+               <div class="form-group">
+                  <div class="col-md-6 offset-md-3">
+                     <label >Segundos</label>
+                     <input type="number" name="valor" th:field="*{seconds}" class="form-control " placeholder="123456" required>    
+                  </div>
+               </div>
+               <div class="form-group">
+                  <div class="col-md-6 offset-md-3">
+                     <input type="submit" value="Converter" class="btn btn-primary" name="">
+                  </div>
+               </div>
+            </form>
+            <table class="table table-striped">
+            <thead>
+               <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Segundos Informados</th>
+                  <th scope="col">Tempo Formatado</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr th:if="${listTime.empty}">
+                  <td colspan="2"> Sem Informações..</td>
+               </tr>
+               <tr th:each="list : ${listTime}">
+                  <td><span th:text="${list.id}"></span></td>
+                  <td><span th:text="${list.seconds}"></span></td>
+                  <td><span th:text="${list.timeFormat}"></span></td>
+               </tr>
+            </tbody>
+         </table>
+         </div>
+      </div>
+      <footer class="page-footer font-small blue pt-4" id="footer">
+         <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+         <script src="/bootstrap/js/bootstrap.min.js"
+            th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+      </footer>
+   </body>
+</html>
