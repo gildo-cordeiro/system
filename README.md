@@ -3,7 +3,7 @@ Projeto simples que realiza a conversão dos segundos de um evento de uma fabric
 
 <h4>Versões:</h4>
 <ul>
-	<li>Java 11.0.11</li>
+	<li>JDK 11.0.11</li>
 	<li>PostgreSQL v12.9</li>
 	<li>Spring Boot v2.5.7</li>
 </ul>
